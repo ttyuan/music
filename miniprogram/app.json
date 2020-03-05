@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/playlist/playlist",
+    "pages/blog/blog",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#d43c33",
+    "navigationBarTitleText": "music",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color":"#474747",
+    "selectedColor": "#d43c43",
+    "list": [{
+      "pagePath": "pages/playlist/playlist",
+      "text": "music",
+      "iconPath": "images/music.png",
+      "selectedIconPath": "images/music-selected.png"
+    },
+    {
+      "pagePath": "pages/blog/blog",
+      "text": "blog",
+      "iconPath": "images/blog.png",
+      "selectedIconPath": "images/blog-selected.png"
+    },
+    {
+      "pagePath": "pages/profile/profile",
+      "text": "profile",
+      "iconPath": "images/profile.png",
+      "selectedIconPath": "images/profile-selected.png"
+    }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
