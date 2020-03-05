@@ -29,7 +29,9 @@ exports.main = async (event, context) => {
   }
   if(tasks.length > 0){
     list = (await Promise.all(tasks)).reduce((acc,cur) => {
-      data: acc.data.concat(cur.data)
+      return{
+        data: acc.data.concat(cur.data)
+      }
     })
   }
 
@@ -48,7 +50,7 @@ exports.main = async (event, context) => {
       }
     }
     if(flag){
-      newData.push(playlist)
+      newData.push(playlist[i])
     }
   }
 

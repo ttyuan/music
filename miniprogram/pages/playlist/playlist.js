@@ -24,22 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: 'Loading',
-    })
-    wx.cloud.callFunction({
-      name: 'music',
-      data: {
-        start: this.data.playlist.length,
-        count: MAX_LIMIT
-      }
-    }).then((res) => {
-      console.log(res)
-      this.setData({
-        playlist: res.result.data
-      })
-      wx.hideLoading()
-    })
+    this._getPlaylist()
   },
 
   /**
@@ -74,14 +59,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      playlist: []
+    })
+    this._getPlaylist()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this._getPlaylist()
   },
 
   /**
@@ -89,5 +77,25 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  _getPlaylist(){
+    wx.showLoading({
+      title: 'Loading',
+    })
+    wx.cloud.callFunction({
+      name: 'music',
+      data: {
+        start: this.data.playlist.length,
+        count: MAX_LIMIT
+      }
+    }).then((res) => {
+      console.log(res)
+      this.setData({
+        playlist:  this.data.playlist.concat(res.result.data)
+      })
+      wx.stopPullDownRefresh()
+      wx.hideLoading()
+    })
   }
 })
